@@ -10,8 +10,8 @@ services:
 
   master:
     build:
-      context: .
-      dockerfile: Dockerfile.master
+      context: ./master
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     environment:
@@ -21,8 +21,8 @@ services:
 
   worker:
     build:
-      context: .
-      dockerfile: Dockerfile.worker
+      context: ./worker
+      dockerfile: Dockerfile
     environment:
       - MASTER_URL=http://master:8000
       - NODE_PORT=8001
