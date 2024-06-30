@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  ray-head:
+    image: rayproject/ray:latest
+    ports:
+      - "6379:6379"
+      - "8265:8265"
+    command: ray start --head --port=6379 --dashboard-port=8265 --dashboard-host=0.0.0.0
+
+  master:
+    build:
+      context: .
+      dockerfile: Dockerfile.master
+    ports:
+      - "8000:8000"
+    environment:
+      - RAY_ADDRESS=ray://ray-head:10001
+    depends_on:
+      - ray-head
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - MASTER_URL=http://master:8000
+      - NODE_PORT=8001
+      - RAY_ADDRESS=ray://ray-head:10001
+    depends_on:
+      - master
+      - ray-head
