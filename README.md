@@ -24,8 +24,8 @@ This project implements a decentralized GPU cluster system using Ray, FastAPI, a
 
 2. Clone this repository:
    ```
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone [<repository-url>](https://github.com/piyushgit011/decentralized-clusters.git)
+   cd decentralized-clusters
    ```
 
 3. Build and start the containers:
