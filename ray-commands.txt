@@ -1,0 +1,45 @@
+Next steps
+  To add another node to this Ray cluster, run
+    ray start --address='172.31.34.177:6379'
+  
+  To connect to this Ray cluster:
+    import ray
+    ray.init()
+  
+  To submit a Ray job using the Ray Jobs CLI:
+    RAY_ADDRESS='http://127.0.0.1:8265' ray job submit --working-dir . -- python my_script.py
+  
+  See https://docs.ray.io/en/latest/cluster/running-applications/job-submission/index.html 
+  for more information on submitting Ray jobs to the Ray cluster.
+  
+  To terminate the Ray runtime, run
+    ray stop
+  
+  To view the status of the cluster, use
+    ray status
+  
+  To monitor and debug Ray, view the dashboard at 
+    127.0.0.1:8265
+  
+  If connection to the dashboard fails, check your firewall settings and network configuration.
+Shared connection to 54.227.33.106 closed.
+  New status: up-to-date
+
+Useful commands:
+  To terminate the cluster:
+    ray down /workspace/ray-cluster-config.yaml
+  
+  To retrieve the IP address of the cluster head:
+    ray get-head-ip /workspace/ray-cluster-config.yaml
+  
+  To port-forward the cluster's Ray Dashboard to the local machine:
+    ray dashboard /workspace/ray-cluster-config.yaml
+  
+  To submit a job to the cluster, port-forward the Ray Dashboard in another terminal and run:
+    ray job submit --address http://localhost:<dashboard-port> --working-dir . -- python my_script.py
+  
+  To connect to a terminal on the cluster head for debugging:
+    ray attach /workspace/ray-cluster-config.yaml
+  
+  To monitor autoscaling:
+    ray exec /workspace/ray-cluster-config.yaml 'tail -n 100 -f /tmp/ray/session_latest/logs/monitor*'
