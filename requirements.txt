@@ -39,12 +39,11 @@ pydantic==2.8.2
 pydantic_core==2.20.1
 Pygments==2.18.0
 PyGObject==3.36.0
-python-apt==2.0.1+ubuntu0.20.4.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-multipart==0.0.9
 PyYAML==6.0.1
-ray==2.10.0
+ray
 referencing==0.35.1
 requests==2.22.0
 requests-unixsocket==0.2.0
@@ -64,3 +63,10 @@ virtualenv==20.25.0
 watchfiles==0.22.0
 websockets==12.0
 zipp==3.19.2
+fastapi
+uvicorn
+pyjwt
+databases
+sqlalchemy
+aiosqlite
+python-multipart
